@@ -1,6 +1,5 @@
 export type ImageGalleryContainer = {
   gallery: Array<string>;
-  className?: string;
 };
 
 export type ImageCarousel = {

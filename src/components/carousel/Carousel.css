@@ -1,10 +1,15 @@
 /*CAROUSEL*/
-.carousel {
-  display: none;
+.image-carousel {
+  position: absolute;
 }
 
-.carousel > .active {
-  display: block;
+.image-carousel > img {
+  position: relative;
+  opacity: 0;
+}
+
+.image-carousel.active > img {
+  opacity: 1;
 }
 
 /*DOTS*/

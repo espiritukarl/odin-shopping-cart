@@ -2,12 +2,14 @@
 import { useEffect, useState } from "react";
 
 //Components
-import { ImageCarousel } from "../../components/carousel/Carousel";
+import { Loading } from "../../components/Loading";
+import { Nav } from "../../components/navigation/Nav";
 
 //utils
 import { fetchData } from "../../utils/fetchData";
 import type { Product } from "../../common/types";
 import "./Home.css";
+import { Carousel } from "../../components/carousel/Carousel";
 
 function App() {
   const [productData, setProductData] = useState<Product[]>([]);
@@ -43,28 +45,15 @@ function App() {
     );
     return {
       gallery: filteredImages.map((product) => product.image),
-      category,
     };
   });
 
-  console.log(categorizedImages);
-
-  if (loading) document.body.style.backgroundColor = "black";
-  else document.body.style.backgroundColor = "white";
+  if (loading) return <Loading />;
   return (
-    <div>
-      <button onClick={() => loadData()}>Click</button>
-      {productData.map((product: Product) => {
-        return (
-          <div>
-            <pre key={product.id + product.title}>
-              {JSON.stringify(product, null, 4)}
-            </pre>
-          </div>
-        );
-      })}
-      <ImageCarousel images={categorizedImages} />
-    </div>
+    <>
+      <Nav />
+      <Carousel images={categorizedImages} />
+    </>
   );
 }
 

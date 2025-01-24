@@ -8,8 +8,8 @@ import { ImageGallery } from "../imageGallery/ImageGallery";
 import type { ImageCarousel, ImageGalleryContainer } from "../../common/types";
 import "./Carousel.css";
 
-export function ImageCarousel({ images }: ImageCarousel) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export function Carousel({ images }: ImageCarousel) {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   function nextSlide() {
     currentIndex === images.length - 1
@@ -26,11 +26,14 @@ export function ImageCarousel({ images }: ImageCarousel) {
     <main className="carousel-container">
       <div className="carousel">
         {images.map((imageGallery: ImageGalleryContainer, idx: number) => (
-          <ImageGallery
-            gallery={imageGallery.gallery}
-            key={`image-carousel-${idx}`}
-            className={idx === currentIndex ? "active" : ""}
-          />
+          <div
+            className={`image-carousel ${idx === currentIndex ? "active" : ""}`}
+          >
+            <ImageGallery
+              gallery={imageGallery.gallery}
+              key={`image-carousel-${idx}`}
+            />
+          </div>
         ))}
       </div>
       <div className="dots-container">
