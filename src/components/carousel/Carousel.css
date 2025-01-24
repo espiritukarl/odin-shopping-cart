@@ -1,3 +1,13 @@
+/*CAROUSEL*/
+.carousel {
+  display: none;
+}
+
+.carousel > .active {
+  display: block;
+}
+
+/*DOTS*/
 .dots-container {
   display: flex;
   gap: 10px;

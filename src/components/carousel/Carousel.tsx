@@ -35,7 +35,10 @@ export function ImageCarousel({ images }: ImageCarousel) {
       </div>
       <div className="dots-container">
         {images.map((_, idx: number) => (
-          <div className={currentIndex === idx ? "dot active" : "dot"}></div>
+          <div
+            className={currentIndex === idx ? "dot active" : "dot"}
+            key={`dot-${idx}`}
+          ></div>
         ))}
       </div>
     </main>

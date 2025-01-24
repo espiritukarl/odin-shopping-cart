@@ -47,6 +47,8 @@ function App() {
     };
   });
 
+  console.log(categorizedImages);
+
   if (loading) document.body.style.backgroundColor = "black";
   else document.body.style.backgroundColor = "white";
   return (
