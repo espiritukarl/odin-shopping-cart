@@ -1,0 +1,17 @@
+.dots-container {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.dot.active {
+  background-color: #000;
+}
