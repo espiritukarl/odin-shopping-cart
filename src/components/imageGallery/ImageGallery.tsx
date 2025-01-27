@@ -4,7 +4,7 @@ import "./ImageGallery.css";
 
 export function ImageGallery({ gallery }: ImageGalleryContainer) {
   return (
-    <>
+    <div className="image-gallery">
       {gallery.map((image, idx) => (
         <img
           key={`image-gallery-${idx}`}
@@ -12,6 +12,6 @@ export function ImageGallery({ gallery }: ImageGalleryContainer) {
           alt={`Gallery Image ${idx}`}
         />
       ))}
-    </>
+    </div>
   );
 }

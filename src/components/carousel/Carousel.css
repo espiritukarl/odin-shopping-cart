@@ -1,30 +1,54 @@
-/*CAROUSEL*/
-.image-carousel {
-  position: absolute;
-}
-
-.image-carousel > img {
+/* CAROUSEL CONTAINER */
+.carousel-container {
   position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* CAROUSEL */
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* IMAGE CAROUSEL */
+.image-carousel {
+  flex: 0 0 100%;
+  transition: opacity 0.5s ease-in-out;
   opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.image-carousel.active > img {
+.image-carousel.active {
   opacity: 1;
+  visibility: visible;
 }
 
-/*DOTS*/
+/* DOTS CONTAINER */
 .dots-container {
   display: flex;
+  justify-content: center;
   gap: 10px;
+  width: 100%;
+  margin: 16px auto;
+  position: absolute;
+  bottom: 0;
 }
 
+/* DOT */
 .dot {
   border: 1px solid #000;
   border-radius: 50%;
   background-color: transparent;
   height: 30px;
   width: 30px;
-  transition: background-color 300ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
 }
 
 .dot.active {
