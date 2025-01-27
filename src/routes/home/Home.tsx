@@ -6,41 +6,42 @@ import { Loading } from "../../components/Loading";
 import { Nav } from "../../components/navigation/Nav";
 
 //utils
-import { fetchData } from "../../utils/fetchData";
+import { fetchProducts, fetchCategories } from "../../utils/fetchData";
 import type { Product } from "../../common/types";
 import "./Home.css";
 import { Carousel } from "../../components/carousel/Carousel";
 
 function App() {
-  const [productData, setProductData] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Product["category"][]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   // const [error, setError] = useState<string | null>(null);
 
-  const [categories, setCategories] = useState<Product["category"][]>([]);
-
-  const loadData = () => {
+  useEffect(() => {
     setLoading(true);
 
-    Promise.all([
-      fetchData("products").then((data) => data),
-      fetchData("products/categories").then((data) => data),
-    ])
-      .then(([productData, categoriesData]) => {
-        setProductData(productData);
-        setCategories(categoriesData);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+    const fetchData = async () => {
+      try {
+        const [productsData, categoriesData] = await Promise.all([
+          fetchProducts(),
+          fetchCategories(),
+        ]);
 
-  useEffect(() => {
-    loadData();
+        setProducts(productsData);
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const categorizedImages = categories.map((category) => {
-    const filteredImages = productData.filter(
+    const filteredImages = products.filter(
       (product) => product.category === category
     );
     return {
