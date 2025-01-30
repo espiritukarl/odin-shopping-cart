@@ -1,20 +1,30 @@
+:root {
+  --grid-size: 40vh;
+}
+
 /* IMAGE GALLERY */
 .image-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-rows: repeat(2, var(--grid-size));
+  grid-template-columns: repeat(2, var(--grid-size));
+  gap: 10px;
   padding: 16px;
+  margin: 2.5vh auto 2.5vh auto;
+  border-radius: 1.5%;
+  width: fit-content;
+  background-color: white;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* GALLERY IMAGE */
 .image-gallery > img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
 .image-gallery > img:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
