@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Sans+3:wght@400;600&family=Space+Mono&family=Bebas+Neue&display=swap");
+
+/* ROOT STYLING */
+:root {
+  /* Color Variables */
+  --primary-blue: #2563eb;
+  --trust-navy: #1e293b;
+  --coral-accent: #ff6b6b;
+  --mint-fresh: #4fd1c5;
+  --cloud-bg: #f8fafc;
+  --graphite-text: #334155;
+  --subtle-gray: #cbd5e1;
+
+  /* HERO COLORS */
+  --hero-accent: #ff6b6b; /* Coral from your palette */
+  --hero-secondary: #4fd1c5; /* Mint accent */
+  --hero-light: #f8fafc; /* Cloud background color */
+  --hero-dark: #1e293b; /* Navy */
+
+  /* Spacing */
+  --card-padding: 1.5rem;
+  --section-spacing: 3rem;
+
+  /* Fonts */
+  --hero-font: "Bebas Neue", sans-serif;
+  --heading-font: "Inter", sans-serif;
+  --body-font: "Source Sans 3", sans-serif;
+  --accent-font: "Space Mono", monospace;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: var(--cloud-bg);
+  font-family: var(--heading-font);
+}
