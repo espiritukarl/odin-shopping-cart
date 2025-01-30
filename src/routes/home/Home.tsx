@@ -53,7 +53,22 @@ function App() {
   return (
     <>
       <Nav />
-      <Carousel images={categorizedImages} />
+      <main className="hero-content">
+        <div className="hero-text">
+          <div className="hero-headline">SMARTSHOPPING</div>
+          <div className="hero-subhead">STARTS HERE</div>
+          <h1>
+            Quality Meets
+            <br />
+            <span className="highlight">Extraordinary Value</span>
+          </h1>
+          <p>
+            Daily deals from electronics to everyday essentials
+            <br />– all in one trusted marketplace
+          </p>
+        </div>
+        <Carousel images={categorizedImages} />
+      </main>
     </>
   );
 }

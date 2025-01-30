@@ -1,0 +1,30 @@
+.hero-content {
+  background-color: var(--subtle-gray);
+  display: flex;
+  align-items: center;
+  height: 90vh;
+}
+
+.hero-text {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.hero-headline {
+  font-family: var(--hero-font);
+  font-size: clamp(3rem, 9vw, 6rem);
+  letter-spacing: 3px;
+  line-height: 0.8;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--hero-accent);
+  text-shadow: 2px 2px 4px var(--hero-dark);
+}
+
+.hero-subhead {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: 1.25px;
+  color: var(--hero-dark);
+  text-shadow: 1px 2px 3px var(--hero-dark);
+}
