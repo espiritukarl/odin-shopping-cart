@@ -1,9 +1,5 @@
-export type ImageGalleryContainer = {
-  gallery: Array<string>;
-};
-
 export type ImageCarousel = {
-  images: Array<ImageGalleryContainer>;
+  categorizedProducts: Array<ProductData[]>;
 };
 
 interface Rating {
@@ -11,7 +7,13 @@ interface Rating {
   count: number;
 }
 
-export interface Product {
+export interface ProductCardData {
+  title: string;
+  image: string;
+  rating: Rating;
+}
+
+export interface ProductData {
   id: number;
   title: string;
   price: number;

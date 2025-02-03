@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { ImageGallery } from "../imageGallery/ImageGallery";
 
 //utils
-import type { ImageCarousel, ImageGalleryContainer } from "../../common/types";
+import type { ImageCarousel, ProductData } from "../../common/types";
 import "./Carousel.css";
 
-export function Carousel({ images }: ImageCarousel) {
+export function Carousel({ categorizedProducts }: ImageCarousel) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   function nextSlide() {
-    currentIndex === images.length - 1
+    currentIndex === categorizedProducts.length - 1
       ? setCurrentIndex(0)
       : setCurrentIndex(currentIndex + 1);
   }
@@ -25,14 +25,12 @@ export function Carousel({ images }: ImageCarousel) {
   return (
     <section className="carousel-container">
       <div className="carousel">
-        {images.map((imageGallery: ImageGalleryContainer, idx: number) => (
+        {categorizedProducts.map((product: ProductData[], idx: number) => (
           <div
             className={`image-carousel ${idx === currentIndex ? "active" : ""}`}
+            key={`image-carousel-${product[idx].category}`}
           >
-            <ImageGallery
-              gallery={imageGallery.gallery}
-              key={`image-carousel-${idx}`}
-            />
+            <ImageGallery products={product} />
           </div>
         ))}
       </div>

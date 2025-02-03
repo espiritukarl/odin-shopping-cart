@@ -7,15 +7,15 @@ import { Nav } from "../../components/navigation/Nav";
 
 //utils
 import { fetchProducts, fetchCategories } from "../../utils/fetchData";
-import type { Product } from "../../common/types";
+import type { ProductData } from "../../common/types";
 import "./Home.css";
 import { Carousel } from "../../components/carousel/Carousel";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Product["category"][]>([]);
+  const [products, setProducts] = useState<ProductData[]>([]);
+  const [categories, setCategories] = useState<ProductData["category"][]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  // const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<unknown | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -30,26 +30,20 @@ function App() {
         setProducts(productsData);
         setCategories(categoriesData);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        // setError("Failed to fetch data");
+        setError(error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
-  const categorizedImages = categories.map((category) => {
-    const filteredImages = products.filter(
-      (product) => product.category === category
-    );
-    return {
-      gallery: filteredImages.map((product) => product.image),
-    };
-  });
+  const categorizedProducts = categories.map((category) =>
+    products.filter((p) => p.category === category)
+  );
 
   if (loading) return <Loading />;
+  // if (error) return <Error />;
   return (
     <>
       <Nav />
@@ -67,7 +61,7 @@ function App() {
             <br />– all in one trusted marketplace
           </p>
         </div>
-        <Carousel images={categorizedImages} />
+        <Carousel categorizedProducts={categorizedProducts} />
       </main>
     </>
   );
