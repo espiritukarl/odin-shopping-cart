@@ -1,6 +1,8 @@
 // Routes
 import Home from "./home/Home.tsx";
 import { Shop } from "./shop/Shop.tsx";
+import { Products } from "./products/Products.tsx";
+import { Error } from "./error/Error.tsx";
 
 export const router = [
   {
@@ -8,7 +10,15 @@ export const router = [
     element: <Home />,
   },
   {
-    path: "products/:name",
+    path: "shop",
     element: <Shop />,
+  },
+  {
+    path: "shop/:category",
+    element: <Products />,
+  },
+  {
+    path: "*", // Handle invalid categories
+    element: <Error />,
   },
 ];

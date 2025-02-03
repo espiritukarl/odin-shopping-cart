@@ -10,7 +10,7 @@ export function ImageGallery({ products }: { products: ProductData[] }) {
     <div className="image-gallery">
       {products.slice(0, 4).map((product: ProductData, idx: number) => (
         <Link
-          to={`/products/${product.category}/${product.title}`}
+          to={`/shop/${product.category}/${product.title}`}
           key={`image-gallery-${idx}`}
         >
           <img
