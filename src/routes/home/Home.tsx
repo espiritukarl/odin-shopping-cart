@@ -4,18 +4,17 @@ import { useEffect, useState } from "react";
 //Components
 import { Loading } from "../../components/Loading";
 import { Nav } from "../../components/navigation/Nav";
+import { Carousel } from "../../components/carousel/Carousel";
 
 //utils
-import { fetchProducts, fetchCategories } from "../../utils/fetchData";
+import { fetchDataAPI } from "../../utils/fetchData";
 import type { ProductData } from "../../common/types";
 import "./Home.css";
-import { Carousel } from "../../components/carousel/Carousel";
 
 function App() {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [categories, setCategories] = useState<ProductData["category"][]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<unknown | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -23,14 +22,14 @@ function App() {
     const fetchData = async () => {
       try {
         const [productsData, categoriesData] = await Promise.all([
-          fetchProducts(),
-          fetchCategories(),
+          fetchDataAPI("products"),
+          fetchDataAPI("products/categories"),
         ]);
 
         setProducts(productsData);
         setCategories(categoriesData);
       } catch (error) {
-        setError(error);
+        throw error;
       } finally {
         setLoading(false);
       }
@@ -43,7 +42,6 @@ function App() {
   );
 
   if (loading) return <Loading />;
-  // if (error) return <Error />;
   return (
     <>
       <Nav />
