@@ -30,7 +30,7 @@ export function Shop() {
     fetchData();
   }, []);
 
-  if (loading) <Loading />;
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -38,7 +38,7 @@ export function Shop() {
       <div className="shop-layout">
         {categories.map((category: ProductData["category"]) => (
           <Link to={category} key={`shop-layout-${category}`}>
-            {category}
+            <h3>{category}</h3>
           </Link>
         ))}
       </div>
