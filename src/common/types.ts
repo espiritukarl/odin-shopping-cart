@@ -7,12 +7,6 @@ interface Rating {
   count: number;
 }
 
-export interface ProductCardData {
-  title: string;
-  image: string;
-  rating: Rating;
-}
-
 export interface ProductData {
   id: number;
   title: string;
