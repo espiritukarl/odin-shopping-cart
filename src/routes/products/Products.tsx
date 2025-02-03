@@ -1,10 +1,11 @@
 //react & router
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 //Components
 import { Loading } from "../../components/Loading";
 import { ProductCard } from "../../components/productCard/ProductCard";
+import { Error } from "../error/Error";
 
 //utils
 import { fetchDataAPI } from "../../utils/fetchData";
@@ -15,7 +16,7 @@ import "./Products.css";
 export function Products() {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [error, setError] = useState<boolean>(false);
   const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
@@ -23,10 +24,12 @@ export function Products() {
 
     const fetchData = async () => {
       try {
-        const categoriesData = await fetchDataAPI(
-          `products/category/${category}`
-        );
+        const [categoriesData, allCategories] = await Promise.all([
+          fetchDataAPI(`products/category/${category}`),
+          fetchDataAPI("products/categories"),
+        ]);
         setProducts(categoriesData);
+        if (!allCategories.includes(category)) setError(true);
       } catch (error) {
         throw error;
       } finally {
@@ -36,11 +39,15 @@ export function Products() {
     fetchData();
   }, [category]);
 
-  if (loading) <Loading />;
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <>
       <Nav />
+      <Link to="/shop" className="back-link">
+        &larr; Back to Categories
+      </Link>
       {products.map((product) => (
         <ProductCard product={product} key={`${product.title}-product-card`} />
       ))}
