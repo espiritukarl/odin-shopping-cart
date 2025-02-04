@@ -1,9 +1,16 @@
+//react
+import { useState } from "react";
+
+//components
+import { ProductQuantity } from "../productQuantity/ProductQuantity";
+
 //utils
 import { ProductData } from "../../common/types";
 import { useCart } from "../../utils/CartContext";
 
 export function ProductCard({ product }: { product: ProductData }) {
   const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState<number>(0);
 
   return (
     <article className="product-card-container">
@@ -17,7 +24,15 @@ export function ProductCard({ product }: { product: ProductData }) {
         <div className="product-rating">{product.rating.rate}</div>
         <div className="product-amount-bought">{product.rating.count}</div>
       </div>
-      <button className="add-to-cart" onClick={() => addToCart(product)}>
+      <ProductQuantity
+        productClass="nothing"
+        quantity={quantity}
+        setQuantity={setQuantity}
+      />
+      <button
+        className="add-to-cart"
+        onClick={() => addToCart(product, quantity)}
+      >
         Add to Cart
       </button>
     </article>

@@ -1,3 +1,13 @@
+export type CartProduct = {
+  item: ProductData;
+  quantity: number;
+};
+
+export type CartContextType = {
+  cartItems: Array<CartProduct>;
+  addToCart: (product: ProductData, quantity: number) => void;
+};
+
 export type ImageCarousel = {
   categorizedProducts: Array<ProductData[]>;
 };
