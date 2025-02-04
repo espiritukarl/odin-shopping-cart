@@ -1,6 +1,6 @@
 //utils
 import { useCart } from "../../utils/CartContext";
-import { ProductData } from "../../common/types";
+import { CartProduct } from "../../common/types";
 
 export function Cart() {
   const { cartItems } = useCart();
@@ -8,12 +8,14 @@ export function Cart() {
     <aside className="cart-container">
       <h2>My Cart:</h2>
       <ul>
-        {cartItems.map((item: ProductData) => (
-          <li key={`${item.id}-cart`}>{item.title}</li>
+        {cartItems.map((product: CartProduct) => (
+          <li key={`${product.item.id}-cart`}>
+            {product.item.title} ({product.quantity})
+          </li>
         ))}
       </ul>
       <div className="cart-checkout">
-        <div className="cart-quantity">Quantity: {cartItems.length}</div>
+        <div className="cart-quantity">Total Items: {cartItems.length}</div>
         <button className="checkout">Checkout</button>
       </div>
     </aside>
