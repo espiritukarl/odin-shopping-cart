@@ -15,7 +15,9 @@ export function Cart() {
         ))}
       </ul>
       <div className="cart-checkout">
-        <div className="cart-quantity">Total Items: {cartItems.length}</div>
+        <div className="cart-quantity">
+          Total Items: {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+        </div>
         <button className="checkout">Checkout</button>
       </div>
     </aside>
