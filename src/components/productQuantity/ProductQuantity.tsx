@@ -20,7 +20,7 @@ export function ProductQuantity({
 
   return (
     <div className={`product-quantity-container ${productClass}`}>
-      <button onClick={reduceQuantity} disabled={quantity == 0}>
+      <button onClick={reduceQuantity} disabled={quantity <= 0}>
         -
       </button>
       <input
