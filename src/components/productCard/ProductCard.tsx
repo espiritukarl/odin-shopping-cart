@@ -22,6 +22,7 @@ export function ProductCard({ product }: { product: ProductData }) {
         alt={`${product.title} image`}
         className="product-img"
       />
+      <div className="product-price">{product.price}</div>
       <div className="product-buys-container">
         <div className="product-rating">
           <Rating
