@@ -30,10 +30,10 @@ main.shop {
   font-size: 2.5rem;
   text-decoration: none;
   text-transform: capitalize;
-  background-color: var(--subtle-gray);
+  background-color: #fff;
   color: var(--graphite-text);
   border-radius: 1.5%;
-  box-shadow: 8px 8px 4px rgba(255, 107, 107, 0.4);
+  box-shadow: 8px 8px 1px rgba(255, 107, 107, 0.4);
   transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
     box-shadow 300ms ease-in-out, transform 300ms ease-in-out,
     font-weight 300ms ease-in-out;
