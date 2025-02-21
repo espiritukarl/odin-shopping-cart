@@ -157,3 +157,9 @@ body {
   background-color: var(--cloud-bg);
   font-family: var(--heading-font);
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
