@@ -1,6 +1,7 @@
 //react or route
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./Shop.css";
 
 //Components
 import { Nav } from "../../components/navigation/Nav";
@@ -35,13 +36,19 @@ export function Shop() {
   return (
     <>
       <Nav />
-      <div className="shop-layout">
-        {categories.map((category: ProductData["category"]) => (
-          <Link to={category} key={`shop-layout-${category}`}>
-            <h3>{category}</h3>
-          </Link>
-        ))}
-      </div>
+      <main className="shop">
+        <div className="shop-layout">
+          {categories.map((category: ProductData["category"]) => (
+            <Link
+              to={category}
+              key={`shop-layout-${category}`}
+              className="shop-categories"
+            >
+              {category}
+            </Link>
+          ))}
+        </div>
+      </main>
     </>
   );
 }
