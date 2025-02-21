@@ -1,0 +1,19 @@
+nav.navigation-container {
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--graphite-text);
+  color: var(--cloud-bg);
+  font-size: 1.25rem;
+}
+
+nav.navigation-container ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+li.navigation-links a {
+  color: var(--cloud-bg);
+  text-decoration: none;
+}
