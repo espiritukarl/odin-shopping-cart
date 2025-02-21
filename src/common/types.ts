@@ -6,6 +6,7 @@ export type CartProduct = {
 export type CartContextType = {
   cartItems: Array<CartProduct>;
   addToCart: (product: ProductData, quantity: number) => void;
+  clearCart: () => void;
 };
 
 export type ImageCarousel = {
