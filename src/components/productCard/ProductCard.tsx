@@ -1,5 +1,6 @@
 //react
 import { useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 //components
 import { ProductQuantity } from "../productQuantity/ProductQuantity";
@@ -11,6 +12,7 @@ import { useCart } from "../../utils/CartContext";
 export function ProductCard({ product }: { product: ProductData }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(0);
+  const roundedValue = (num: number) => Math.round(num * 2) / 2;
 
   return (
     <article className="product-card-container">
@@ -21,7 +23,14 @@ export function ProductCard({ product }: { product: ProductData }) {
         className="product-img"
       />
       <div className="product-buys-container">
-        <div className="product-rating">{product.rating.rate}</div>
+        <div className="product-rating">
+          <Rating
+            initialValue={roundedValue(product.rating.rate)}
+            allowFraction
+            readonly
+          />
+          {product.rating.rate}/5
+        </div>
         <div className="product-amount-bought">{product.rating.count}</div>
       </div>
       <ProductQuantity
