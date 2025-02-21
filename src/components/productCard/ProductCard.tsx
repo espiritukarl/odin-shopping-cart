@@ -11,7 +11,7 @@ import { useCart } from "../../utils/CartContext";
 
 export function ProductCard({ product }: { product: ProductData }) {
   const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
   const roundedValue = (num: number) => Math.round(num * 2) / 2;
 
   return (
@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: ProductData }) {
         alt={`${product.title} image`}
         className="product-img"
       />
-      <div className="product-price">{product.price}</div>
+      <div className="product-price">${product.price}</div>
       <div className="product-buys-container">
         <div className="product-rating">
           <Rating
