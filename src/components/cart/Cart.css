@@ -74,13 +74,16 @@ aside.cart-container {
   transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
 
-.cart-checkout .checkout:disabled {
-  opacity: 30%;
-  cursor: not-allowed;
-}
-
 .cart-checkout .checkout:hover {
   cursor: pointer;
   background-color: var(--trust-navy);
   color: #fff;
+}
+
+.cart-checkout .checkout:disabled,
+.cart-checkout .checkout:disabled:hover {
+  opacity: 30%;
+  cursor: not-allowed;
+  background-color: #fff;
+  color: var(--trust-navy);
 }
