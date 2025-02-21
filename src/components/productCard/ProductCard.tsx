@@ -41,6 +41,7 @@ export function ProductCard({ product }: { product: ProductData }) {
       <button
         className="add-to-cart"
         onClick={() => addToCart(product, quantity)}
+        disabled={quantity < 1}
       >
         Add to Cart
       </button>
