@@ -14,6 +14,7 @@ import "./Nav.css";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Drawer from "@mui/material/Drawer";
 
 const CartBadge = ({ cartItems }: { cartItems: CartProduct[] }) => {
   return (
@@ -35,6 +36,7 @@ const CartBadge = ({ cartItems }: { cartItems: CartProduct[] }) => {
 
 export function Nav() {
   const [showCart, setShowCart] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const { cartItems } = useCart();
   return (
     <nav className="navigation-container">
@@ -46,10 +48,28 @@ export function Nav() {
           <Link to="/shop">Shop</Link>
         </li>
       </ul>
-      <div className="cart" onClick={() => setShowCart(!showCart)}>
+      <div
+        className="cart"
+        onClick={() => {
+          setShowCart(!showCart);
+          setOpen(true);
+        }}
+      >
         <CartBadge cartItems={cartItems} />
       </div>
-      {showCart && <Cart />}
+      <Drawer
+        open={open}
+        onClose={() => setOpen(false)}
+        anchor="right"
+        sx={{
+          "& .MuiDrawer-paper": {
+            width: "20vw",
+            backgroundColor: "var(--graphite-text)",
+          },
+        }}
+      >
+        <Cart />
+      </Drawer>
     </nav>
   );
 }
