@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Drawer from "@mui/material/Drawer";
 
 // Components
 import { Loading } from "../../components/Loading";
@@ -22,6 +23,7 @@ export function Products() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const { category } = useParams<{ category: string }>();
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
@@ -76,13 +78,25 @@ export function Products() {
         <Link to="/shop" className="back-link">
           <ArrowBackIcon fontSize="small" /> Back to Categories
         </Link>
-        <Filter
-          price={price}
-          setPrice={setPrice}
-          rating={rating}
-          setRating={setRating}
-          maxPrice={maxPrice}
-        />
+        <button onClick={() => setOpen(true)}>Filter</button>
+        <Drawer
+          open={open}
+          onClose={() => setOpen(false)}
+          sx={{
+            "& .MuiDrawer-paper": {
+              width: "20vw",
+              backgroundColor: "var(--graphite-text)",
+            },
+          }}
+        >
+          <Filter
+            price={price}
+            setPrice={setPrice}
+            rating={rating}
+            setRating={setRating}
+            maxPrice={maxPrice}
+          />
+        </Drawer>
 
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
