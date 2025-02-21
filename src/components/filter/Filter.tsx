@@ -4,6 +4,7 @@ import "./Filter.css";
 //mui
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 interface FilterType {
   price: number[];
@@ -11,6 +12,7 @@ interface FilterType {
   rating: number[];
   setRating: Dispatch<SetStateAction<number[]>>;
   maxPrice: number;
+  onClose: () => void;
 }
 
 const sliderStyle = {
@@ -26,6 +28,7 @@ export default function Filter({
   rating,
   setRating,
   maxPrice,
+  onClose,
 }: FilterType) {
   function handlePriceChange(_e: Event, newValue: number | number[]) {
     setPrice(newValue as number[]);
@@ -37,8 +40,11 @@ export default function Filter({
 
   return (
     <aside className="filter-container">
+      <div className="filter-close" onClick={onClose}>
+        <CloseRoundedIcon sx={{ fontSize: "30px" }} />
+      </div>
       <div className="filter-slider">
-        <span>Price:</span>
+        <span>Price</span>
         <Box sx={{ width: "100%" }}>
           <Slider
             getAriaLabel={() => "Price range"}
@@ -52,7 +58,7 @@ export default function Filter({
         </Box>
       </div>
       <div className="filter-slider">
-        <span>Rating:</span>
+        <span>Rating</span>
         <Box sx={{ width: "100%" }}>
           <Slider
             getAriaLabel={() => "Rating range"}
