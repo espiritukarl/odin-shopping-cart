@@ -95,6 +95,7 @@ export function Products() {
             rating={rating}
             setRating={setRating}
             maxPrice={maxPrice}
+            onClose={() => setOpen(false)}
           />
         </Drawer>
 
