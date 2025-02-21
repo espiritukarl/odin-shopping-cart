@@ -5,6 +5,9 @@ nav.navigation-container {
   background-color: var(--graphite-text);
   color: var(--cloud-bg);
   font-size: 1.25rem;
+  top: 0;
+  position: sticky;
+  z-index: 1000;
 }
 
 nav.navigation-container ul {
