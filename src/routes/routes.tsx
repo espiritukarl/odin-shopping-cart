@@ -17,6 +17,10 @@ export const router = [
     path: "shop/:category",
     element: <Products />,
   },
+  // {
+  // path: "shop/:category/:product",
+  // element: <ProductPage />
+  // },
   {
     path: "*", // Handle invalid categories
     element: <Error />,
