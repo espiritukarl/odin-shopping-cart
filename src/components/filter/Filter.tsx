@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import "./Filter.css";
 
 //mui
 import Box from "@mui/material/Box";
@@ -11,6 +12,13 @@ interface FilterType {
   setRating: Dispatch<SetStateAction<number[]>>;
   maxPrice: number;
 }
+
+const sliderStyle = {
+  color: "var(--coral-accent)", // Change the main slider color
+  "& .MuiSlider-thumb": { backgroundColor: "var(--coral-accent)" }, // Thumb color
+  "& .MuiSlider-track": { backgroundColor: "var(--coral-accent)" }, // Track color
+  "& .MuiSlider-rail": { backgroundColor: "var(--coral-accent)" }, // Rail color
+};
 
 export default function Filter({
   price,
@@ -29,8 +37,9 @@ export default function Filter({
 
   return (
     <aside className="filter-container">
-      <div className="filter-price">
-        <Box sx={{ width: 300 }}>
+      <div className="filter-slider">
+        <span>Price:</span>
+        <Box sx={{ width: "100%" }}>
           <Slider
             getAriaLabel={() => "Price range"}
             value={price}
@@ -38,11 +47,13 @@ export default function Filter({
             valueLabelDisplay="auto"
             min={0}
             max={maxPrice}
+            sx={sliderStyle}
           />
         </Box>
       </div>
-      <div className="filter-rating">
-        <Box sx={{ width: 300 }}>
+      <div className="filter-slider">
+        <span>Rating:</span>
+        <Box sx={{ width: "100%" }}>
           <Slider
             getAriaLabel={() => "Rating range"}
             value={rating}
@@ -50,6 +61,7 @@ export default function Filter({
             valueLabelDisplay="auto"
             min={0}
             max={5}
+            sx={sliderStyle}
           />
         </Box>
       </div>
