@@ -1,0 +1,9 @@
+main.products {
+  padding: 2.5rem;
+}
+
+.back-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
