@@ -20,10 +20,14 @@ const CartBadge = ({ cartItems }: { cartItems: CartProduct[] }) => {
     <IconButton color="inherit">
       <Badge
         badgeContent={cartItems.reduce((acc, item) => acc + item.quantity, 0)}
-        color="primary"
+        color="secondary"
+        max={99}
         showZero
+        sx={{
+          "& .MuiBadge-badge": { fontSize: "1.05rem" },
+        }}
       >
-        <ShoppingCartIcon />
+        <ShoppingCartIcon sx={{ fontSize: "2rem" }} />
       </Badge>
     </IconButton>
   );
