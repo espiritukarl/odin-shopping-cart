@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Drawer from "@mui/material/Drawer";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
 
 // Components
 import { Loading } from "../../components/Loading";
@@ -24,6 +25,11 @@ export function Products() {
   const [error, setError] = useState<boolean>(false);
   const { category } = useParams<{ category: string }>();
   const [open, setOpen] = useState<boolean>(false);
+  const [gapSize, setGapSize] = useState("10px");
+
+  useEffect(() => {
+    setGapSize(products.length < 6 ? "100px" : "10px");
+  }, [products.length]);
 
   useEffect(() => {
     setLoading(true);
@@ -75,10 +81,21 @@ export function Products() {
     <>
       <Nav />
       <main className="products">
-        <Link to="/shop" className="back-link">
-          <ArrowBackIcon fontSize="small" /> Back to Categories
-        </Link>
-        <button onClick={() => setOpen(true)}>Filter</button>
+        <div className="breadcrumb-container">
+          <Breadcrumbs separator=">" aria-label="breadcrumb">
+            <Link to="/shop" className="breadcrumb-link">
+              Categories
+            </Link>
+            <span>
+              {category!.charAt(0).toUpperCase() + category!.slice(1)}
+            </span>
+          </Breadcrumbs>
+        </div>
+
+        <button onClick={() => setOpen(true)} className="filter-button">
+          <FilterAltRoundedIcon width="0.9rem" />
+          <span>Filter</span>
+        </button>
         <Drawer
           open={open}
           onClose={() => setOpen(false)}
@@ -99,16 +116,21 @@ export function Products() {
           />
         </Drawer>
 
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <ProductCard
-              product={product}
-              key={`${product.title}-product-card`}
-            />
-          ))
-        ) : (
-          <p>No products found matching the selected filters.</p>
-        )}
+        <div
+          className="products-container"
+          style={{ "--dynamic-gap": gapSize } as React.CSSProperties}
+        >
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <ProductCard
+                product={product}
+                key={`${product.title}-product-card`}
+              />
+            ))
+          ) : (
+            <p>No products found.</p>
+          )}
+        </div>
       </main>
     </>
   );
