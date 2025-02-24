@@ -2,8 +2,53 @@ main.products {
   padding: 2.5rem;
 }
 
-.back-link {
+.breadcrumb-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-container {
+  margin-bottom: 10px;
+}
+
+.filter-button {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: sticky;
+  top: 15vh;
+  left: 0;
+  background-color: var(--graphite-text);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--heading-font);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 2.5%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 300ms ease-in-out, color 300ms ease-in-out,
+    box-shadow 300ms ease-in-out;
+  z-index: 50;
+}
+
+.filter-button:hover {
+  background-color: #fff;
+  color: var(--graphite-text);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dynamic-gap);
+  justify-content: center;
   align-items: center;
 }
