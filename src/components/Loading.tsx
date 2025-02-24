@@ -9,6 +9,7 @@ export function Loading() {
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "var(--trust-navy)",
       }}
     >
       <CircularProgress />
