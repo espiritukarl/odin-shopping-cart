@@ -42,7 +42,11 @@ export function Shop() {
             <Link
               to={category}
               key={`shop-layout-${category}`}
-              className="shop-categories"
+              className={`shop-categories ${
+                category.split(" ").length > 1
+                  ? category.split(" ")[0].match(/\bmen\b|\bwomen\b/)
+                  : category
+              }`}
             >
               {category}
             </Link>

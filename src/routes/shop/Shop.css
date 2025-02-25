@@ -30,20 +30,30 @@ main.shop {
   font-size: 2.5rem;
   text-decoration: none;
   text-transform: capitalize;
-  background-color: #fff;
-  color: var(--graphite-text);
+  background-color: rgba(23, 29, 38, 0.2);
+  background-size: contain;
+  background-position: center;
+  background-blend-mode: overlay;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   border-radius: 1.5%;
-  box-shadow: 8px 8px 1px rgba(255, 107, 107, 0.4);
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
-    box-shadow 300ms ease-in-out, transform 300ms ease-in-out,
-    font-weight 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.shop-categories.electronics {
+  background-image: url("../../assets/electronics.jpg");
+}
+.shop-categories.jewelery {
+  background-image: url("../../assets/jewelery.jpg");
+}
+.shop-categories.men {
+  background-image: url("../../assets/men_clothing.jpg");
+}
+.shop-categories.women {
+  background-image: url("../../assets/women_clothing.jpg");
 }
 
 .shop-categories:hover {
-  background-color: var(--graphite-text);
-  color: #fff;
-  box-shadow: none;
+  background-color: rgba(23, 29, 38, 0.8);
   transform: scale(1.03);
-  font-family: var(--heading-font);
-  font-weight: 700;
 }
