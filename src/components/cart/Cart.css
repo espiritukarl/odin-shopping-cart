@@ -87,3 +87,19 @@ aside.cart-container {
   background-color: #fff;
   color: var(--trust-navy);
 }
+
+.cart-item {
+  position: relative;
+}
+
+.remove-cart-button {
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  transition: transform 200ms ease-in-out;
+}
+
+.remove-cart-button:hover {
+  transform: scale(1.05);
+}

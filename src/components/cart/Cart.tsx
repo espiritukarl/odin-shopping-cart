@@ -3,21 +3,25 @@ import { useCart } from "../../utils/CartContext";
 import { CartProduct } from "../../common/types";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Divider from "@mui/material/Divider";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import "./Cart.css";
 
 export function Cart({ onClose }: { onClose: () => void }) {
-  const { cartItems, clearCart } = useCart();
+  const { cartItems, removeFromCart, clearCart } = useCart();
 
   function CartItemsList() {
     if (cartItems.length === 0) {
       return <li className="product none">No products in Cart.</li>;
     }
-    return cartItems.map((product: CartProduct) => (
-      <li key={`${product.item.id}-cart`}>
+    return cartItems.map((product: CartProduct, idx: number) => (
+      <li key={`${product.item.id}-cart`} className="cart-item">
         <div className="product title">{product.item.title}</div>
         <div className="product quantity">(Quantity: {product.quantity})</div>
         <div className="product price">
           ${product.item.price * product.quantity}
+        </div>
+        <div className="remove-cart-button" onClick={() => removeFromCart(idx)}>
+          <DeleteOutlineIcon color="error" />
         </div>
       </li>
     ));
