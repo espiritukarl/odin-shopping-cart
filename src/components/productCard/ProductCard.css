@@ -11,12 +11,11 @@
   box-shadow: 0 0 5px rgba(50, 98, 233, 0.65);
   text-align: center;
   cursor: pointer;
-  transition: transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
 }
 
 .product-card-container:hover {
   box-shadow: 0 0 20px rgba(50, 98, 233, 0.65);
-  transform: translateY(-5px);
 }
 
 .product-img {
