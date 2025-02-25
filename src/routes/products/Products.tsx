@@ -25,11 +25,6 @@ export function Products() {
   const [error, setError] = useState<boolean>(false);
   const { category } = useParams<{ category: string }>();
   const [open, setOpen] = useState<boolean>(false);
-  const [gapSize, setGapSize] = useState("10px");
-
-  useEffect(() => {
-    setGapSize(products.length < 6 ? "100px" : "10px");
-  }, [products.length]);
 
   useEffect(() => {
     setLoading(true);
@@ -82,7 +77,11 @@ export function Products() {
       <Nav />
       <main className="products">
         <div className="breadcrumb-container">
-          <Breadcrumbs separator=">" aria-label="breadcrumb">
+          <Breadcrumbs
+            separator=">"
+            aria-label="breadcrumb"
+            sx={{ color: "#ffffffcc", fontFamily: "var(--accent-font)" }}
+          >
             <Link to="/shop" className="breadcrumb-link">
               Categories
             </Link>
@@ -93,7 +92,7 @@ export function Products() {
         </div>
 
         <button onClick={() => setOpen(true)} className="filter-button">
-          <FilterAltRoundedIcon width="0.9rem" />
+          <FilterAltRoundedIcon width="0.8rem" />
           <span>Filter</span>
         </button>
         <Drawer
@@ -116,10 +115,7 @@ export function Products() {
           />
         </Drawer>
 
-        <div
-          className="products-container"
-          style={{ "--dynamic-gap": gapSize } as React.CSSProperties}
-        >
+        <div className="products-container">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard

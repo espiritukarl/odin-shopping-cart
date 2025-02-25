@@ -1,5 +1,6 @@
 main.products {
   padding: 2.5rem;
+  background-color: var(--trust-navy);
 }
 
 .breadcrumb-link {
@@ -12,7 +13,7 @@ main.products {
 }
 
 .breadcrumb-container {
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .filter-button {
@@ -27,11 +28,10 @@ main.products {
   color: #fff;
   border: none;
   padding: 10px 20px;
-  margin-bottom: 20px;
-  font-family: var(--heading-font);
+  margin-bottom: 1.5rem;
+  font-family: var(--accent-font);
   letter-spacing: 1px;
   font-size: 1rem;
-  font-weight: 700;
   cursor: pointer;
   border-radius: 2.5%;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
@@ -49,7 +49,7 @@ main.products {
 .products-container {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--dynamic-gap);
+  gap: 100px;
   justify-content: center;
   align-items: center;
 }
