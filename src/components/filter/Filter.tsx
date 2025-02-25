@@ -60,6 +60,7 @@ export default function Filter({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               handleInputChange(e)
             }
+            placeholder="Search for a product"
           />
         </Box>
       </div>
