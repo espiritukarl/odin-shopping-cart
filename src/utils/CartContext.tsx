@@ -13,12 +13,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCartItems((prev) => [...prev, { item: product, quantity: quantity }]);
   };
 
+  const removeFromCart = (idx: number) => {
+    setCartItems((prev) => prev.filter((_, i) => i !== idx));
+  };
+
   const clearCart = () => {
     setCartItems([]);
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
