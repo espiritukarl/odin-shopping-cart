@@ -13,15 +13,13 @@ export function Cart({ onClose }: { onClose: () => void }) {
       return <li className="product none">No products in Cart.</li>;
     }
     return cartItems.map((product: CartProduct) => (
-      <>
-        <li key={`${product.item.id}-cart`}>
-          <div className="product title">{product.item.title}</div>
-          <div className="product quantity">(Quantity: {product.quantity})</div>
-          <div className="product price">
-            ${product.item.price * product.quantity}
-          </div>
-        </li>
-      </>
+      <li key={`${product.item.id}-cart`}>
+        <div className="product title">{product.item.title}</div>
+        <div className="product quantity">(Quantity: {product.quantity})</div>
+        <div className="product price">
+          ${product.item.price * product.quantity}
+        </div>
+      </li>
     ));
   }
   return (
