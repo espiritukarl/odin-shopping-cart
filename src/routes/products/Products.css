@@ -1,6 +1,7 @@
 main.products {
   padding: 2.5rem;
   background-color: var(--trust-navy);
+  flex: 1;
 }
 
 .breadcrumb-link {
@@ -52,4 +53,10 @@ main.products {
   gap: 100px;
   justify-content: center;
   align-items: center;
+}
+
+.products-container p {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: var(--accent-font);
 }
