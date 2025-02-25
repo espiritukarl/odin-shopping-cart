@@ -11,6 +11,8 @@ interface FilterType {
   setPrice: Dispatch<SetStateAction<number[]>>;
   rating: number[];
   setRating: Dispatch<SetStateAction<number[]>>;
+  searchProducts: string;
+  setSearchProducts: Dispatch<SetStateAction<string>>;
   maxPrice: number;
   onClose: () => void;
 }
@@ -28,6 +30,8 @@ export default function Filter({
   rating,
   setRating,
   maxPrice,
+  searchProducts,
+  setSearchProducts,
   onClose,
 }: FilterType) {
   function handlePriceChange(_e: Event, newValue: number | number[]) {
@@ -38,10 +42,26 @@ export default function Filter({
     setRating(newValue as number[]);
   }
 
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearchProducts(event.target.value);
+  }
+
   return (
     <aside className="filter-container">
       <div className="filter-close" onClick={onClose}>
         <CloseRoundedIcon sx={{ fontSize: "30px" }} />
+      </div>
+      <div className="filter-search">
+        <span>Search</span>
+        <Box sx={{ width: "100%" }}>
+          <input
+            type="text"
+            value={searchProducts}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleInputChange(e)
+            }
+          />
+        </Box>
       </div>
       <div className="filter-slider">
         <span>Price</span>

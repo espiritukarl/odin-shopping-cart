@@ -10,7 +10,8 @@ aside.filter-container {
   color: #fff;
 }
 
-.filter-slider {
+.filter-slider,
+.filter-search {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -28,4 +29,20 @@ aside.filter-container {
 .filter-close:hover {
   transform: scale(1.02);
   color: var(--coral-accent);
+}
+
+.filter-search input,
+.filter-search input:focus {
+  width: 95%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid gray;
+  padding: 7.5px 5px;
+  border-radius: 2.5px;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 400;
+  font-family: var(--heading-font);
+  letter-spacing: 0.5px;
+  font-size: 1rem;
 }

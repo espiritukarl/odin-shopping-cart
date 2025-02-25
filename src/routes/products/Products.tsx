@@ -18,13 +18,14 @@ import "./Products.css";
 
 export function Products() {
   const [products, setProducts] = useState<ProductData[]>([]);
+  const [searchProducts, setSearchProducts] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<number>(0);
   const [price, setPrice] = useState<number[]>([0, 0]);
   const [rating, setRating] = useState<number[]>([0, 5]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const { category } = useParams<{ category: string }>();
   const [open, setOpen] = useState<boolean>(false);
+  const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
     setLoading(true);
@@ -69,7 +70,8 @@ export function Products() {
       product.price >= price[0] &&
       product.price <= price[1] &&
       product.rating.rate >= rating[0] &&
-      product.rating.rate <= rating[1]
+      product.rating.rate <= rating[1] &&
+      product.title.includes(searchProducts)
   );
 
   return (
@@ -111,6 +113,8 @@ export function Products() {
             rating={rating}
             setRating={setRating}
             maxPrice={maxPrice}
+            searchProducts={searchProducts}
+            setSearchProducts={setSearchProducts}
             onClose={() => setOpen(false)}
           />
         </Drawer>
