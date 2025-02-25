@@ -1,6 +1,6 @@
 //react
 import { useState } from "react";
-import { Rating } from "react-simple-star-rating";
+import Rating from "@mui/material/Rating";
 import Tooltip from "@mui/material/Tooltip";
 
 //components
@@ -14,7 +14,6 @@ import "./ProductCard.css";
 export function ProductCard({ product }: { product: ProductData }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
-  const roundedValue = (num: number) => Math.round(num * 2) / 2;
 
   return (
     <article className="product-card-container">
@@ -26,32 +25,13 @@ export function ProductCard({ product }: { product: ProductData }) {
       <h4 className="product-tile">{product.title}</h4>
       <div className="product-price">${product.price}</div>
       <div className="product-buys-container">
-        <Tooltip
-          title={
-            <span
-              style={{
-                fontSize: "1rem",
-                padding: "4px",
-                display: "block",
-              }}
-            >
-              {product.rating.rate}/5
-            </span>
-          }
-          arrow
-          sx={{
-            "& .MuiTooltip-tooltip": {
-              fontSize: "1rem",
-            },
-          }}
-          placement="top-end"
-        >
+        <Tooltip title={`${product.rating.rate}/5`} arrow placement="top-end">
           <div className="product-rating">
             <Rating
-              initialValue={roundedValue(product.rating.rate)}
-              showTooltip={false}
-              allowFraction
-              readonly
+              defaultValue={product.rating.rate}
+              precision={0.2}
+              readOnly
+              sx={{ fontSize: "2rem" }}
             />
           </div>
         </Tooltip>
