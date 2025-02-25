@@ -1,5 +1,6 @@
 //react
 import { Dispatch, SetStateAction } from "react";
+import "./ProductQuantity.css";
 
 export function ProductQuantity({
   productClass,

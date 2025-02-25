@@ -1,0 +1,50 @@
+.product-quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #65696d79;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #f8fafc;
+  width: fit-content;
+  margin-bottom: 0.75rem;
+}
+
+.product-quantity-container button {
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.product-quantity-container button:hover {
+  background-color: #1d4ed8;
+}
+
+.product-quantity-container button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.product-quantity-container input {
+  width: 50px;
+  height: 32px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
