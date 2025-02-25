@@ -27,6 +27,7 @@ main.products {
   color: #fff;
   border: none;
   padding: 10px 20px;
+  margin-bottom: 20px;
   font-family: var(--heading-font);
   letter-spacing: 1px;
   font-size: 1rem;
