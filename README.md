@@ -41,6 +41,9 @@ CartL is a React + TypeScript e-commerce project that allows users to browse pro
 
 ---
 
+## TODO  
+- Mobile responsiveness
+
 ## 🛠 Setup & Installation  
 
 ### 1️⃣ Clone the repository  
