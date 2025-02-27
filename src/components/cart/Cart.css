@@ -24,6 +24,10 @@ aside.cart-container {
   margin-bottom: 5px;
 }
 
+.product.title {
+  padding-right: 20px;
+}
+
 .product.none {
   font-style: italic;
 }
