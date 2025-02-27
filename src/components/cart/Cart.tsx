@@ -1,13 +1,26 @@
+import { useState } from "react";
+
 //utils
 import { useCart } from "../../utils/CartContext";
 import { CartProduct } from "../../common/types";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Divider from "@mui/material/Divider";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import "./Cart.css";
 
-export function Cart({ onClose }: { onClose: () => void }) {
+export function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCart();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleClose = (
+    _event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") return;
+    setOpen(false);
+  };
 
   function CartItemsList() {
     if (cartItems.length === 0) {
@@ -53,7 +66,7 @@ export function Cart({ onClose }: { onClose: () => void }) {
           className="checkout"
           disabled={cartItems.length === 0}
           onClick={() => {
-            onClose();
+            setOpen(true);
             clearCart();
           }}
         >
@@ -61,6 +74,21 @@ export function Cart({ onClose }: { onClose: () => void }) {
           items)
         </button>
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          severity="success"
+          onClose={handleClose}
+        >
+          Successfully Checked Out!
+        </MuiAlert>
+      </Snackbar>
     </aside>
   );
 }
