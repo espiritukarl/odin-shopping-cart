@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# 🛒 CartL - React Shopping Cart  
+[Live Demo 🚀](https://cartl.netlify.app/)  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CartL is a React + TypeScript e-commerce project that allows users to browse products, add them to a cart, and filter by categories. The project follows best practices in component structuring, API fetching, and testing.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features  
 
-## Expanding the ESLint configuration
+**Home Page**  
+- Displays a **carousel of categories**  
+- Links to shop categories  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Shop Page**  
+- **Product cards** with images, titles, and an "Add to Cart" button  
+- **Increment/Decrement quantity buttons** and manual input  
+- **Filters** to sort products  
 
-- Configure the top-level `parserOptions` property like this:
+**Shopping Cart**  
+- Shows number of items in the navigation bar  
+- Button to proceed to checkout
+- Shows total price of all selected items  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**Navigation Bar**  
+- Persistent navigation between pages  
+- Displays **cart count**  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+**API Integration**  
+- Fetches products from **FakeStore API**  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**Deployment**  
+- Hosted on **Netlify** with proper SPA routing  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## Tech Stack  
+
+🔹 **React + TypeScript (Vite)** – Fast, scalable frontend framework  
+🔹 **MUI (Material-UI)** – Modern, responsive UI components  
+🔹 **React Router** – Client-side navigation  
+
+---
+
+## 🛠 Setup & Installation  
+
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/yourusername/cartl.git
+cd cartl
