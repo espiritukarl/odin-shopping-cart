@@ -19,22 +19,20 @@ function App() {
   useEffect(() => {
     setLoading(true);
 
-    const fetchData = async () => {
-      try {
-        const [productsData, categoriesData] = await Promise.all([
-          fetchDataAPI("products"),
-          fetchDataAPI("products/categories"),
-        ]);
-
-        setProducts(productsData);
-        setCategories(categoriesData);
-      } catch (error) {
-        throw error;
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    Promise.all([fetchDataAPI("products"), fetchDataAPI("products/categories")])
+      .then(
+        ([productsData, categoriesData]: [
+          categoriesData: ProductData[],
+          allCategories: ProductData["category"][]
+        ]) => {
+          setProducts(productsData);
+          setCategories(categoriesData);
+        }
+      )
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const categorizedProducts = categories.map((category) =>

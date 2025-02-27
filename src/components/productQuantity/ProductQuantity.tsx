@@ -21,7 +21,14 @@ export function ProductQuantity({
 
   return (
     <div className={`product-quantity-container ${productClass}`}>
-      <button onClick={reduceQuantity} disabled={quantity <= 0}>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          reduceQuantity();
+        }}
+        disabled={quantity <= 0}
+      >
         -
       </button>
       <input
@@ -29,7 +36,15 @@ export function ProductQuantity({
         value={quantity}
         onChange={(e) => handleInputChange(e)}
       />
-      <button onClick={addQuantity}>+</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          addQuantity();
+        }}
+      >
+        +
+      </button>
     </div>
   );
 }

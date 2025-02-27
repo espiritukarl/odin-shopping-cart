@@ -18,17 +18,12 @@ export function Shop() {
   useEffect(() => {
     setLoading(true);
 
-    const fetchData = async () => {
-      try {
-        const categoriesData = await fetchDataAPI("products/categories");
-        setCategories(categoriesData);
-      } catch (error) {
-        throw error;
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    fetchDataAPI("products/categories")
+      .then((categoriesData: ProductData["category"][]) =>
+        setCategories(categoriesData)
+      )
+      .catch((error) => console.error("Error: ", error))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <Loading />;
@@ -44,7 +39,7 @@ export function Shop() {
               key={`shop-layout-${category}`}
               className={`shop-categories ${
                 category.split(" ").length > 1
-                  ? category.split(" ")[0].match(/\bmen\b|\bwomen\b/)
+                  ? category.split(" ")[0].match(/\bmen\b|\bwomen\b/)?.[0] || ""
                   : category
               }`}
             >

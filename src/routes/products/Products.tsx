@@ -29,36 +29,35 @@ export function Products() {
 
   useEffect(() => {
     setLoading(true);
+    Promise.all([
+      fetchDataAPI(`products/category/${category}`),
+      fetchDataAPI("products/categories"),
+    ])
+      .then(
+        ([categoriesData, allCategories]: [
+          categoriesData: ProductData[],
+          allCategories: ProductData["category"][]
+        ]) => {
+          if (!allCategories.includes(category ?? "")) {
+            setError(true);
+            return;
+          }
 
-    const fetchData = async () => {
-      try {
-        const [categoriesData, allCategories] = await Promise.all([
-          fetchDataAPI(`products/category/${category}`),
-          fetchDataAPI("products/categories"),
-        ]);
-
-        if (!allCategories.includes(category)) {
-          setError(true);
-          return;
+          setProducts(categoriesData);
+          if (categoriesData.length > 0) {
+            const maxPrice = Math.max(
+              ...categoriesData.map((p: ProductData) => p.price)
+            );
+            setPrice([0, maxPrice]);
+            setMaxPrice(maxPrice);
+          }
         }
-
-        setProducts(categoriesData);
-        if (categoriesData.length > 0) {
-          const maxPrice = Math.max(
-            ...categoriesData.map((p: ProductData) => p.price)
-          );
-          setPrice([0, maxPrice]);
-          setMaxPrice(maxPrice);
-        }
-      } catch (error) {
+      )
+      .catch((error) => {
         console.error("Error fetching products:", error);
         setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+      })
+      .finally(() => setLoading(false));
   }, [category]);
 
   if (loading) return <Loading />;

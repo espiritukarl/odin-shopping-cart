@@ -17,7 +17,10 @@ export function ProductCard({ product }: { product: ProductData }) {
   const [quantity, setQuantity] = useState<number>(1);
 
   return (
-    <Link to={`/shop/${product.category}/${product.id}`}>
+    <Link
+      to={`/shop/${product.category}/${product.id}`}
+      style={{ textDecoration: "none" }}
+    >
       <article className="product-card-container">
         <img
           src={product.image}
@@ -46,7 +49,11 @@ export function ProductCard({ product }: { product: ProductData }) {
         />
         <button
           className="add-to-cart"
-          onClick={() => addToCart(product, quantity)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            addToCart(product, quantity);
+          }}
           disabled={quantity < 1}
         >
           Add to Cart

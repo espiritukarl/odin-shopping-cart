@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CartProvider } from "./utils/CartContext";
+import { CartProvider } from "./utils/CartProvider";
 import { router } from "./routes/routes";
 import "./index.css";
 
