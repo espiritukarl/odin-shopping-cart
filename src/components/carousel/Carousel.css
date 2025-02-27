@@ -1,30 +1,36 @@
 /* CAROUSEL CONTAINER */
 .carousel-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  flex: 2;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
 /* CAROUSEL */
 .carousel {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* IMAGE CAROUSEL */
 .image-carousel {
-  flex: 0 0 100%;
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  position: absolute;
 }
 
 .image-carousel.active {
   opacity: 1;
-  visibility: visible;
+  position: relative;
+  z-index: 10;
 }

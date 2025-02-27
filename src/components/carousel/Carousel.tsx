@@ -11,16 +11,14 @@ import "./Carousel.css";
 export function Carousel({ categorizedProducts }: ImageCarousel) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  function nextSlide() {
-    currentIndex === categorizedProducts.length - 1
-      ? setCurrentIndex(0)
-      : setCurrentIndex(currentIndex + 1);
-  }
-
   useEffect(() => {
-    const intervalId = setInterval(nextSlide, 5000);
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === categorizedProducts.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
     return () => clearInterval(intervalId);
-  }, [currentIndex]);
+  }, [categorizedProducts.length]);
 
   return (
     <section className="carousel-container">
@@ -28,7 +26,7 @@ export function Carousel({ categorizedProducts }: ImageCarousel) {
         {categorizedProducts.map((product: ProductData[], idx: number) => (
           <div
             className={`image-carousel ${idx === currentIndex ? "active" : ""}`}
-            key={`image-carousel-${product[idx].category}`}
+            key={`carousel-${idx}`}
           >
             <ImageGallery products={product} />
           </div>

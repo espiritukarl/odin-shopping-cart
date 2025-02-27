@@ -14,11 +14,9 @@ import "./Home.css";
 function App() {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [categories, setCategories] = useState<ProductData["category"][]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
-
     Promise.all([fetchDataAPI("products"), fetchDataAPI("products/categories")])
       .then(
         ([productsData, categoriesData]: [
@@ -46,7 +44,6 @@ function App() {
       <main className="hero-content">
         <div className="hero-text">
           <div className="hero-headline">SMARTSHOPPING</div>
-          <div className="hero-subhead">STARTS HERE</div>
           <h1>
             Quality Meets
             <br />
