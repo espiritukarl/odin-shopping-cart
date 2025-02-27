@@ -68,7 +68,7 @@ export function Nav() {
           },
         }}
       >
-        <Cart onClose={() => setOpen(false)} />
+        <Cart />
       </Drawer>
     </nav>
   );
