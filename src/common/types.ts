@@ -28,3 +28,12 @@ export interface ProductData {
   image: string;
   rating: Rating;
 }
+
+export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+}
