@@ -33,7 +33,7 @@ export function ProductCard({ product }: { product: ProductData }) {
     >
       <article className="product-card-container">
         <img
-          src={product.image}
+          src={product.image.replace(/\._\.jpg$/, '_t.png'}
           alt={`${product.title} image`}
           className="product-img"
         />
